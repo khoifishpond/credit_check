@@ -12,6 +12,10 @@ class CreditCard
     @results = 0
   end
 
+  def last_four
+    @card_number[-4, @card_number.size - 1]
+  end
+
   def is_valid?
     (0..@numbers.size - 1).each do |index|
       if index % 2 == 0
