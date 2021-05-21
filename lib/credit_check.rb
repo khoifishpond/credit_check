@@ -8,7 +8,7 @@ class CreditCard
     @card_number = card_number
     @limit = limit
     @numbers = card_number.split("")
-    @integers = []
+    @to_integers = []
     @results = 0
   end
 
@@ -19,19 +19,19 @@ class CreditCard
   def is_valid?
     (0..@numbers.size - 1).each do |index|
       if index % 2 == 0
-        @integers << @numbers[index].to_i * 2
+        @to_integers << @numbers[index].to_i * 2
       else
-        @integers << @numbers[index].to_i
+        @to_integers << @numbers[index].to_i
       end
     end
 
-    (0..@integers.size - 1).each do |index|
-      if @integers[index] >= 10
-        @integers[index] -= 9
+    (0..@to_integers.size - 1).each do |index|
+      if @to_integers[index] >= 10
+        @to_integers[index] -= 9
       end
     end 
 
-    @integers.each { |integer| @results += integer }
+    @to_integers.each { |integer| @results += integer }
 
     @results % 10 == 0
   end
